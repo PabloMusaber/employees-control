@@ -126,11 +126,13 @@ ORDER BY EmployeeCount DESC;
 
 ## Mis consideraciones 📝
 
-Por motivos de tiempo, en este proyecto se construye una api mínima con todas las entidades de la base de datos y se exponen sólo los endpoints necesarios para ejecutar las consultas presentadas previamente.
+Por motivos de tiempo, en este proyecto se construye una api mínima con todas las entidades de la base de datos, el crud sólo para empleados y los endpoints necesarios para ejecutar las consultas presentadas previamente.
 
-El objetivo es demostrar la ejecución de consultas SQL nativas desde el backend, mapeando la información recibida a dtos específicos.
+El objetivo es demostrar la ejecución de consultas SQL nativas desde el backend, mapeando la información recibida a dtos específicos, y demostrar como van cambiando los resultados obtenidos al modificar la información de los empleados.
 
-**<u>IMPORTANTE</u>: En el repositorio del desafío de [Vehículos](https://github.com/PabloMusaber/vehicles-control) se puede apreciar una API completa, con CRUD para sus entidades, manejo de exceciones, herramienta de logging, deploy en Azure y demás características.**
+En este proyecto se utiliza la librería **Lombok** para reducir el boilerplate.
+
+**<u>IMPORTANTE</u>: En el repositorio del desafío de [Vehículos](https://github.com/PabloMusaber/vehicles-control) se puede apreciar una API completa, con CRUD para sus entidades, manejo de excepciones, herramienta de logging, deploy en Azure con Docker y demás características.**
 
 ## Tecnologías y herramientas utilizadas 🔧
 
@@ -144,7 +146,11 @@ El objetivo es demostrar la ejecución de consultas SQL nativas desde el backend
 
 ## Descripción de funcionalidades ⚙️
 
-La funcionalidad principal de esta API es realizar las consultas solicitadas para la base de datos de empleados. Los endpoints disponibles para realizar estas acciones son los siguientes:
+La funcionalidad principal de esta API es realizar las consultas solicitadas para la base de datos de empleados.
+
+Para comprobar el funcionamiento correcto de estas consultas se agrega también el CRUD de empleados, a fin de ver cómo van mutando los resultados obtenidos al realizar cambios en la base.
+
+Los endpoints disponibles para realizar estas acciones son los siguientes:
 
 <div style="text-align: center;">
   <img src="images/endpoints.jpg" width="80%" alt="Solution Diagram">
@@ -167,3 +173,9 @@ mysql -u [usuario_sql] -p employees < database_dump.sql
 ```
 
 3. Ejecutar el proyecto y probar los endpoints. Se puede probar utilizando **Swagger** desde http://localhost:8080/swagger-ui/index.html
+
+_NOTA_: Hay un dato incorrecto en la base dump que genera un warning al levantar el sistema. Puede borrarse ejecutando esta consulta en la base:
+
+```
+DELETE FROM job_history WHERE employee_id = 0
+```
