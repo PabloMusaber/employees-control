@@ -1,18 +1,21 @@
 package com.challenge.Employees.services.employee;
 
-import java.util.List;
-import com.challenge.Employees.dtos.*;
+import com.challenge.Employees.dtos.CreateEmployeeDTO;
+import com.challenge.Employees.dtos.EmployeeResponseDTO;
 
 public interface EmployeeService {
-    List<SalarySegmentDTO> getSalarySegmentDistribution();
+    // CRUD
+    EmployeeResponseDTO createEmployee(CreateEmployeeDTO createEmployeeDTO);
+    EmployeeResponseDTO getEmployeeById(Long id);
+    EmployeeResponseDTO getAllEmployees();
+    EmployeeResponseDTO updateEmployee(Long id, CreateEmployeeDTO createEmployeeDTO);
+    EmployeeResponseDTO deleteEmployee(Long id);
 
-    List<DepartmentSalarySegmentDTO> getSalarySegmentByDepartment();
-
-    List<HighestPaidEmployeeDTO> getHighestPaidEmployeePerDepartment();
-
-    List<VeteranManagerDTO> getVeteranManagers();
-
-    List<DepartmentAverageSalaryDTO> getDepartmentsWithMoreThan10Employees();
-
-    List<CountryEmployeeStatsDTO> getCountryEmployeeStatistics();
+    // Custom Queries
+    EmployeeResponseDTO getSalarySegmentDistribution();
+    EmployeeResponseDTO getSalarySegmentByDepartment();
+    EmployeeResponseDTO getHighestPaidEmployeePerDepartment();
+    EmployeeResponseDTO getVeteranManagers();
+    EmployeeResponseDTO getDepartmentsWithMoreThan10Employees();
+    EmployeeResponseDTO getCountryEmployeeStatistics();
 }

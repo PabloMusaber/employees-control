@@ -28,9 +28,12 @@ public class Employee {
     @Column(name = "hire_date")
     private LocalDate hireDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "job_id", referencedColumnName = "job_id")
     private Job job;
+
+    @Column(name = "job_title")
+    private String jobTitle;
 
     @Column(name = "salary")
     private Double salary;
@@ -38,11 +41,11 @@ public class Employee {
     @Column(name = "commission_pct")
     private Double commissionPct;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "manager_id")
     private Employee manager;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "department_id")
     private Department department;
 }

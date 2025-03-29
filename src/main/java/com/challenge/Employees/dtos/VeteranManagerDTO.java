@@ -1,10 +1,13 @@
 package com.challenge.Employees.dtos;
 
-public record VeteranManagerDTO(
-        Long employeeId,
-        String firstName,
-        String lastName,
-        String hireDate,
-        String departmentName,
-        String jobTitle) {
+import lombok.Data;
+
+@Data
+public class VeteranManagerDTO {
+    private Long employeeId;
+    private String firstName;
+    private String lastName;
+    private String hireDate;
+    private String departmentName;
+    private String jobTitle;
 }
